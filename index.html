@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI 건강 도우미</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="loader" id="loader">
+    <div class="loader-spinner"></div>
+  </div>
+
+  <div class="page-shell">
+    <nav class="topbar">
+      <div class="brand">
+        <div class="logo">🩺</div>
+        <span>AI 건강 도우미</span>
+      </div>
+
+      <div class="nav-links">
+        <a href="#home">홈</a>
+        <a href="#symptomForm">증상 입력</a>
+        <a href="#healthInfo">건강 정보</a>
+        <a href="#surveySection">설문 결과</a>
+        <a href="#about">소개</a>
+      </div>
+
+      <div class="nav-actions">
+        <button id="themeBtn" class="icon-btn" type="button">🌙 어두움</button>
+      </div>
+    </nav>
+
+    <header class="hero-card" id="home">
+      <div class="hero-copy">
+        <span class="pill">✨ AI 기반 건강 안내</span>
+        <h1>AI 건강 도우미</h1>
+        <p>
+          증상을 입력하면 AI가 일반적인 건강 정보를 제공합니다.
+          이 서비스는 교육 목적의 일반 정보 제공이며 의료진의 진단을 대신하지 않습니다.
+        </p>
+        <button id="startBtn" type="button" class="primary-btn">시작하기</button>
+      </div>
+      <div class="hero-icon" aria-hidden="true">💙</div>
+    </header>
+
+    <main class="content-grid">
+      <section class="card" id="symptomForm">
+        <div class="section-title">
+          <h2>증상 입력</h2>
+        </div>
+
+        <div class="form-grid">
+          <label>
+            <span>나이</span>
+            <input id="ageInput" type="number" min="0" max="120" placeholder="예: 18" />
+          </label>
+          <label>
+            <span>성별</span>
+            <select id="genderSelect">
+              <option value="남성">남성</option>
+              <option value="여성">여성</option>
+              <option value="기타">기타</option>
+            </select>
+          </label>
+          <label>
+            <span>체온 (°C)</span>
+            <input id="tempInput" type="number" step="0.1" min="30" max="45" placeholder="예: 38.4" />
+          </label>
+          <label>
+            <span>증상 지속기간</span>
+            <select id="durationSelect">
+              <option value="1일 미만">1일 미만</option>
+              <option value="1–3일">1–3일</option>
+              <option value="4–7일">4–7일</option>
+              <option value="1주 이상">1주 이상</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="search-box" style="margin-top:16px;">
+          <input id="symptomSearch" type="search" placeholder="증상 검색" />
+        </div>
+
+        <div class="section-title" style="margin-top:18px;">
+          <h3>증상</h3>
+        </div>
+
+        <div class="symptom-group">
+          <h4>전신</h4>
+          <div class="symptom-grid">
+            <label class="symptom-item"><input type="checkbox" value="발열" /> 발열</label>
+            <label class="symptom-item"><input type="checkbox" value="오한" /> 오한</label>
+            <label class="symptom-item"><input type="checkbox" value="피로감" /> 피로감</label>
+            <label class="symptom-item"><input type="checkbox" value="식은땀" /> 식은땀</label>
+            <label class="symptom-item"><input type="checkbox" value="체중 감소" /> 체중 감소</label>
+            <label class="symptom-item"><input type="checkbox" value="근육통" /> 근육통</label>
+          </div>
+        </div>
+
+        <div class="symptom-group">
+          <h4>호흡기</h4>
+          <div class="symptom-grid">
+            <label class="symptom-item"><input type="checkbox" value="기침" /> 기침</label>
+            <label class="symptom-item"><input type="checkbox" value="가래" /> 가래</label>
+            <label class="symptom-item"><input type="checkbox" value="콧물" /> 콧물</label>
+            <label class="symptom-item"><input type="checkbox" value="코막힘" /> 코막힘</label>
+            <label class="symptom-item"><input type="checkbox" value="재채기" /> 재채기</label>
+            <label class="symptom-item"><input type="checkbox" value="인후통" /> 인후통</label>
+            <label class="symptom-item"><input type="checkbox" value="목쉼" /> 목쉼</label>
+            <label class="symptom-item"><input type="checkbox" value="호흡곤란" /> 호흡곤란</label>
+            <label class="symptom-item"><input type="checkbox" value="가슴 답답함" /> 가슴 답답함</label>
+          </div>
+        </div>
+
+        <div class="symptom-group">
+          <h4>신경계</h4>
+          <div class="symptom-grid">
+            <label class="symptom-item"><input type="checkbox" value="두통" /> 두통</label>
+            <label class="symptom-item"><input type="checkbox" value="어지러움" /> 어지러움</label>
+            <label class="symptom-item"><input type="checkbox" value="의식 저하" /> 의식 저하</label>
+            <label class="symptom-item"><input type="checkbox" value="실신" /> 실신</label>
+          </div>
+        </div>
+
+        <div class="symptom-group">
+          <h4>소화기</h4>
+          <div class="symptom-grid">
+            <label class="symptom-item"><input type="checkbox" value="복통" /> 복통</label>
+            <label class="symptom-item"><input type="checkbox" value="메스꺼움" /> 메스꺼움</label>
+            <label class="symptom-item"><input type="checkbox" value="구토" /> 구토</label>
+            <label class="symptom-item"><input type="checkbox" value="설사" /> 설사</label>
+            <label class="symptom-item"><input type="checkbox" value="변비" /> 변비</label>
+            <label class="symptom-item"><input type="checkbox" value="식욕부진" /> 식욕부진</label>
+          </div>
+        </div>
+
+        <div class="symptom-group">
+          <h4>심혈관</h4>
+          <div class="symptom-grid">
+            <label class="symptom-item"><input type="checkbox" value="흉통" /> 흉통</label>
+            <label class="symptom-item"><input type="checkbox" value="심장이 빨리 뜀" /> 심장이 빨리 뜀</label>
+          </div>
+        </div>
+
+        <div class="symptom-group">
+          <h4>피부</h4>
+          <div class="symptom-grid">
+            <label class="symptom-item"><input type="checkbox" value="발진" /> 발진</label>
+            <label class="symptom-item"><input type="checkbox" value="가려움" /> 가려움</label>
+            <label class="symptom-item"><input type="checkbox" value="붓기" /> 붓기</label>
+          </div>
+        </div>
+
+        <div class="symptom-group">
+          <h4>기타</h4>
+          <div class="symptom-grid">
+            <label class="symptom-item"><input type="checkbox" value="눈 충혈" /> 눈 충혈</label>
+            <label class="symptom-item"><input type="checkbox" value="귀 통증" /> 귀 통증</label>
+            <label class="symptom-item"><input type="checkbox" value="배뇨 시 통증" /> 배뇨 시 통증</label>
+            <label class="symptom-item"><input type="checkbox" value="잦은 소변" /> 잦은 소변</label>
+            <label class="symptom-item"><input type="checkbox" value="혈뇨" /> 혈뇨</label>
+            <label class="symptom-item"><input type="checkbox" value="손발 저림" /> 손발 저림</label>
+            <label class="symptom-item"><input type="checkbox" value="관절통" /> 관절통</label>
+          </div>
+        </div>
+
+        <label class="range-wrap">
+          <span>통증 정도: <strong id="painValue">5</strong></span>
+          <input id="painSlider" type="range" min="1" max="10" value="5" />
+        </label>
+
+        <div class="action-row">
+          <button id="analyzeBtn" type="button" class="primary-btn">분석하기</button>
+          <button id="resetBtn" type="button" class="secondary-btn">다시 입력하기</button>
+        </div>
+      </section>
+
+      <section class="card hidden" id="resultCard">
+        <div class="section-title">
+          <h2>분석 결과</h2>
+        </div>
+
+        <div id="emergencyNotice" class="hidden"></div>
+
+        <div class="info-grid">
+          <article class="info-card">
+            <h3>가능성 있는 질환</h3>
+            <p id="resultDiseases">-</p>
+          </article>
+          <article class="info-card">
+            <h3>위험도</h3>
+            <p id="resultRisk">-</p>
+          </article>
+          <article class="info-card">
+            <h3>건강관리 방법</h3>
+            <div id="resultManagement"></div>
+          </article>
+          <article class="info-card">
+            <h3>병원 방문이 필요한 경우</h3>
+            <div id="resultHospital"></div>
+          </article>
+          <article class="info-card">
+            <h3>일반적인 의약품 성분</h3>
+            <p id="resultDrugs">-</p>
+          </article>
+          <article class="info-card">
+            <h3>주의사항</h3>
+            <p id="resultWarning">-</p>
+          </article>
+        </div>
+
+        <p class="disclaimer" id="disclaimer">
+          본 결과는 일반적인 건강 정보이며 의료진의 진단을 대신하지 않습니다.
+        </p>
+      </section>
+
+      <section class="card" id="healthInfo">
+        <div class="section-title">
+          <h2>건강 정보</h2>
+        </div>
+        <div class="info-grid">
+          <article class="info-card">
+            <h3>일반적인 생활 수칙</h3>
+            <ul>
+              <li>충분한 수분 섭취</li>
+              <li>충분한 휴식</li>
+              <li>증상 변화 관찰</li>
+            </ul>
+          </article>
+          <article class="info-card">
+            <h3>주의가 필요한 증상</h3>
+            <ul>
+              <li>호흡곤란</li>
+              <li>흉통</li>
+              <li>실신 또는 의식 저하</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="card" id="surveySection">
+        <div class="section-title">
+          <h2>설문</h2>
+        </div>
+
+        <form id="surveyForm" class="survey-grid">
+          <div>
+            <label>사용하기 쉬웠나요?</label>
+            <div class="star-row" data-question="ease"></div>
+          </div>
+          <div>
+            <label>정보를 이해하기 쉬웠나요?</label>
+            <div class="star-row" data-question="understand"></div>
+          </div>
+          <div>
+            <label>도움이 되었나요?</label>
+            <div class="star-row" data-question="helpful"></div>
+          </div>
+          <div>
+            <label>AI 결과를 신뢰하시나요?</label>
+            <div class="star-row" data-question="trust"></div>
+          </div>
+          <div>
+            <label>실제 병원 진단과 비슷할 것 같나요?</label>
+            <div class="star-row" data-question="similarity"></div>
+          </div>
+          <label>
+            <span>추가 의견</span>
+            <textarea id="commentInput" class="comment-box" placeholder="의견을 남겨 주세요."></textarea>
+          </label>
+
+          <button type="submit" class="primary-btn">제출하기</button>
+          <p id="thankYou" class="thank-you hidden">감사합니다! 응답이 저장되었습니다.</p>
+        </form>
+      </section>
+
+      <section class="card" id="about">
+        <div class="section-title">
+          <h2>소개</h2>
+        </div>
+        <p>
+          본 웹사이트는 학교 생명과학 탐구 프로젝트용으로 제작된 일반 건강 정보 제공 서비스입니다.
+          실제 의료 진단이 아니라 참고용 안내 목적입니다.
+        </p>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

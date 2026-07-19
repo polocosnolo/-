@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI 건강 도우미 관리자</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <nav class="topbar">
+      <div class="brand">
+        <div class="logo">🩺</div>
+        <span>AI 건강 도우미 관리자</span>
+      </div>
+      <div class="nav-links">
+        <a href="index.html">홈</a>
+        <a href="admin.html">설문 결과</a>
+      </div>
+    </nav>
+
+    <section class="card">
+      <div class="section-title">
+        <h2>설문 결과 분석</h2>
+        <div class="action-row">
+          <button id="downloadCsvBtn" class="primary-btn">CSV 다운로드</button>
+          <button id="deleteDataBtn" class="ghost-btn">데이터 삭제</button>
+        </div>
+      </div>
+
+      <div class="admin-grid">
+        <div class="stat-card">
+          <h3>응답 수</h3>
+          <p id="responseCount">0</p>
+        </div>
+        <div class="stat-card">
+          <h3>평균 만족도</h3>
+          <p id="avgSatisfaction">0.0</p>
+        </div>
+        <div class="stat-card">
+          <h3>평균 신뢰도</h3>
+          <p id="avgTrust">0.0</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="section-title">
+        <h2>평균 점수 막대 그래프</h2>
+      </div>
+      <div class="chart-box">
+        <canvas id="barChart" width="800" height="260"></canvas>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="section-title">
+        <h2>신뢰도 원그래프</h2>
+      </div>
+      <div class="chart-box">
+        <canvas id="pieChart" width="800" height="260"></canvas>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="section-title">
+        <h2>응답 표</h2>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>번호</th>
+              <th>날짜</th>
+              <th>사용성</th>
+              <th>이해도</th>
+              <th>도움됨</th>
+              <th>신뢰도</th>
+              <th>병원 유사성</th>
+              <th>의견</th>
+            </tr>
+          </thead>
+          <tbody id="surveyTableBody"></tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
